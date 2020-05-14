@@ -8,10 +8,10 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 @EnableDiscoveryClient
 @SpringBootApplication
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-public class RbacServerTestApplication {
+public class RBACServerTestApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(RbacServerTestApplication.class, args);
+        SpringApplication.run(RBACServerTestApplication.class, args);
     }
 
 }

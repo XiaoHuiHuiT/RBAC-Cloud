@@ -5,6 +5,6 @@
 | |    |   \|    |   \/    |    \     \____ |
 | |____|_  /|______  /\____|__  /\______  / |
 |        \/        \/         \/        \/  |
-|   ${spring.application.name}                           |
+|   ${spring.application.name}                       |
 |   Spring-Boot: ${spring-boot.version}              |
 |-------------------------------------------|
