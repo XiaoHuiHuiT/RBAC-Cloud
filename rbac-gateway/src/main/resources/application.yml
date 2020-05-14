@@ -23,6 +23,15 @@ zuul:
       serviceId: RBAC-Auth
       # \u8868\u793A\u4E0D\u8FC7\u6EE4\u8BF7\u6C42\u5934\u4FE1\u606F\uFF0C\u5373\u8BF7\u6C42\u7684\u8BF7\u6C42\u5934\u4FE1\u606F\u5C06\u539F\u5C01\u4E0D\u52A8\u7684\u8F6C\u53D1\u51FA\u53BB
       sensitiveHeaders: "*"
+    system:
+      path: /system/**
+      serviceId: RBAC-Server-System
+      sensitiveHeaders: "*"
+    test:
+      path: /test/**
+      serviceId: RBAC-Server-Test
+      sensitiveHeaders: "*"
+
   # \u8BBE\u7F6E\u4E3Atrue\u65F6\uFF0C\u8868\u793A\u5F00\u542F\u91CD\u8BD5\u673A\u5236\uFF1B
   retryable: true
   # \u8868\u793A\u5173\u95ED\u6240\u6709\u9ED8\u8BA4\u8DEF\u7531\u914D\u7F6E\u89C4\u5219
