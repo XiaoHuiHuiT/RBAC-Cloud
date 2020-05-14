@@ -1,22 +1,48 @@
 package com.xhh.rbac.common.entity;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.User;
 
-import java.io.Serializable;
+import java.util.Collection;
+import java.util.Date;
 
 @Data
-public class RbacAuthUser implements Serializable {
-    private static final long serialVersionUID = -1748289340320186418L;
+@EqualsAndHashCode(callSuper = true)
+public class RbacAuthUser extends User {
 
-    private String username;
+    private static final long serialVersionUID = -6411066541689297219L;
 
-    private String password;
+    private Long userId;
 
-    private boolean accountNonExpired = true;
+    private String avatar;
 
-    private boolean accountNonLocked = true;
+    private String email;
 
-    private boolean credentialsNonExpired = true;
+    private String mobile;
 
-    private boolean enabled = true;
+    private String sex;
+
+    private Long deptId;
+
+    private String deptName;
+
+    private String roleId;
+
+    private String roleName;
+
+    private Date lastLoginTime;
+
+    private String description;
+
+    private String status;
+
+    public RbacAuthUser(String username, String password, Collection<? extends GrantedAuthority> authorities) {
+        super(username, password, authorities);
+    }
+
+    public RbacAuthUser(String username, String password, boolean enabled, boolean accountNonExpired, boolean credentialsNonExpired, boolean accountNonLocked, Collection<? extends GrantedAuthority> authorities) {
+        super(username, password, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authorities);
+    }
 }
