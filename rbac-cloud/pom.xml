@@ -11,6 +11,8 @@
         <module>../rbac-common</module>
         <module>../rbac-register</module>
         <module>../rbac-auth</module>
+        <module>../rbac-gateway</module>
+        <module>../rbac-server</module>
     </modules>
 
     <packaging>pom</packaging>
