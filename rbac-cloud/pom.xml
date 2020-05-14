@@ -10,6 +10,7 @@
     <modules>
         <module>../rbac-common</module>
         <module>../rbac-register</module>
+        <module>../rbac-auth</module>
     </modules>
 
     <packaging>pom</packaging>
