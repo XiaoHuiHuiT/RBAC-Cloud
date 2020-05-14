@@ -1,9 +1,13 @@
 package com.xhh.rbac.server.system.configure;
 
+import com.xhh.rbac.common.handler.RbacAccessDeniedHandler;
+import com.xhh.rbac.common.handler.RbacAuthExceptionEntryPoint;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
+import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
 
 /**
  * 上述配置表示所有访问rbac-server-system的请求都需要认证，只有通过认证服务器发放的令牌才能进行访问。
@@ -15,6 +19,11 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.R
 @EnableResourceServer
 public class RbacServerSystemResourceServerConfigure extends ResourceServerConfigurerAdapter {
 
+    @Autowired
+    private RbacAccessDeniedHandler accessDeniedHandler;
+    @Autowired
+    private RbacAuthExceptionEntryPoint exceptionEntryPoint;
+
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
@@ -23,4 +32,11 @@ public class RbacServerSystemResourceServerConfigure extends ResourceServerConfi
                 .authorizeRequests()
                 .antMatchers("/**").authenticated();
     }
+
+    @Override
+    public void configure(ResourceServerSecurityConfigurer resources) {
+        resources.authenticationEntryPoint(exceptionEntryPoint)
+                .accessDeniedHandler(accessDeniedHandler);
+    }
+
 }

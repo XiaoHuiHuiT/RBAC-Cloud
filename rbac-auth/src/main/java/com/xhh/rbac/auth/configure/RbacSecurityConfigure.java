@@ -15,13 +15,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Order(2)
 @EnableWebSecurity
 public class RbacSecurityConfigure extends WebSecurityConfigurerAdapter {
+
     @Autowired
     private RbacUserDetailService userDetailService;
-
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Bean
     public AuthenticationManager authenticationManagerBean() throws Exception {
@@ -41,6 +39,6 @@ public class RbacSecurityConfigure extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailService).passwordEncoder(passwordEncoder());
+        auth.userDetailsService(userDetailService).passwordEncoder(passwordEncoder);
     }
 }

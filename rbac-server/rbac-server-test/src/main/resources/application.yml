@@ -20,3 +20,11 @@ security:
     resource:
       id: ${spring.application.name}
       user-info-uri: http://localhost:8301/auth/user
+
+# Feign的回退生效
+feign:
+  hystrix:
+    enabled: true
+hystrix:
+  # 请求拦截器能够顺利获取到令牌
+  shareSecurityContext: true
