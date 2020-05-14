@@ -1,4 +1,4 @@
-package com.xhh.rbacregister.configure;
+package com.xhh.rbac.register.configure;
 
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;

@@ -4,6 +4,19 @@ server:
 spring:
   application:
     name: RBAC-Auth
+  # redis
+  redis:
+    database: 0
+    host: xhh.ddos-sec.cn
+    password: 1234
+    port: 6400
+    jedis:
+      pool:
+        min-idle: 8
+        max-idle: 500
+        max-active: 2000
+        max-wait: 10000
+    timeout: 5000
 
 eureka:
   instance:
