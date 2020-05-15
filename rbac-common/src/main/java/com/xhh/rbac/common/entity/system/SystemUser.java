@@ -4,13 +4,17 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.xhh.rbac.common.annotation.IsMobile;
 import lombok.Data;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Date;
 
 @Data
-@TableName("t_user")// 用于指定对应数据表的表名
+@TableName("t_user")
 public class SystemUser implements Serializable {
 
     private static final long serialVersionUID = -4352868070794165001L;
@@ -33,13 +37,15 @@ public class SystemUser implements Serializable {
     /**
      * 用户 ID
      */
-    @TableId(value = "USER_ID", type = IdType.AUTO)// 表示该字段为数据表主键
+    @TableId(value = "USER_ID", type = IdType.AUTO)
     private Long userId;
 
     /**
      * 用户名
      */
-    @TableField("USERNAME")// 用于指定数据表字段名称
+    @TableField("USERNAME")
+    // @Size(min = 4, max = 10, message = "{range}")注解表示值的长度范围为4到10；
+    @Size(min = 4, max = 10, message = "{range}")
     private String username;
 
     /**
@@ -58,18 +64,25 @@ public class SystemUser implements Serializable {
      * 邮箱
      */
     @TableField("EMAIL")
+    // 表示值的长度不能超过50；
+    @Size(max = 50, message = "{noMoreThan}")
+    // @Email(message = "{email}")表示值必须为邮箱。
+    @Email(message = "{email}")
     private String email;
 
     /**
      * 联系电话
      */
     @TableField("MOBILE")
+    // @IsMobile(message = "{mobile}")表示值必须为手机号码
+    @IsMobile(message = "{mobile}")
     private String mobile;
 
     /**
      * 状态 0锁定 1有效
      */
     @TableField("STATUS")
+    @NotBlank(message = "{required}")
     private String status;
 
     /**
@@ -94,6 +107,7 @@ public class SystemUser implements Serializable {
      * 性别 0男 1女 2 保密
      */
     @TableField("SSEX")
+    @NotBlank(message = "{required}")
     private String sex;
 
     /**
@@ -106,6 +120,7 @@ public class SystemUser implements Serializable {
      * 描述
      */
     @TableField("DESCRIPTION")
+    @Size(max = 100, message = "{noMoreThan}")
     private String description;
 
     /**
@@ -121,7 +136,7 @@ public class SystemUser implements Serializable {
     /**
      * 角色 ID
      */
-    @TableField(exist = false)// 表示非数据表字段，非数据表字段一般用于拓展查询结果
+    @TableField(exist = false)
     private String roleId;
 
     @TableField(exist = false)
