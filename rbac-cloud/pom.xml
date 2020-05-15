@@ -13,6 +13,7 @@
         <module>../rbac-auth</module>
         <module>../rbac-gateway</module>
         <module>../rbac-server</module>
+        <module>../rbac-monitor</module>
     </modules>
 
     <packaging>pom</packaging>

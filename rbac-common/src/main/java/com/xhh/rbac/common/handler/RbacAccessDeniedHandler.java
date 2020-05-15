@@ -22,10 +22,10 @@ public class RbacAccessDeniedHandler implements AccessDeniedHandler {
 
     @Override
     public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException accessDeniedException) throws IOException {
-        RbacResponse febsResponse = new RbacResponse();
+        RbacResponse rbacResponse = new RbacResponse();
         RbacUtil.makeResponse(
                 response, MediaType.APPLICATION_JSON_UTF8_VALUE,
                 // 响应码为HttpServletResponse.SC_FORBIDDEN，即403
-                HttpServletResponse.SC_FORBIDDEN, febsResponse.message("没有权限访问该资源"));
+                HttpServletResponse.SC_FORBIDDEN, rbacResponse.message("没有权限访问该资源"));
     }
 }

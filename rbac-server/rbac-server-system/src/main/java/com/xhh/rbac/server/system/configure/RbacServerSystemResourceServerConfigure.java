@@ -46,5 +46,4 @@ public class RbacServerSystemResourceServerConfigure extends ResourceServerConfi
         resources.authenticationEntryPoint(exceptionEntryPoint)
                 .accessDeniedHandler(accessDeniedHandler);
     }
-
 }

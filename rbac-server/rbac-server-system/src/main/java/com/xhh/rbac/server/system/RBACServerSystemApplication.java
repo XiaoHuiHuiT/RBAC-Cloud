@@ -14,10 +14,12 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableDiscoveryClient
 @SpringBootApplication
 // 开启Spring Cloud Security权限注解
-@EnableGlobalMethodSecurity(prePostEnabled = true)
 @RbacCloudApplication
-@MapperScan("com.xhh.rbac.server.system.mapper")
 @EnableTransactionManagement
+@EnableRbacServerProtect
+@EnableRbacAuthExceptionHandler
+@MapperScan("com.xhh.rbac.server.system.mapper")
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class RBACServerSystemApplication {
 
     public static void main(String[] args) {

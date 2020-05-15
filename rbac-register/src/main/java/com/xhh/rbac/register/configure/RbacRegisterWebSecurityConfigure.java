@@ -5,10 +5,12 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 @EnableWebSecurity
-public class FebsRegisterWebSecurityConfigure extends WebSecurityConfigurerAdapter {
+public class RbacRegisterWebSecurityConfigure extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().ignoringAntMatchers("/eureka/**");
+        http.csrf().ignoringAntMatchers("/eureka/**")
+                .and()
+                .authorizeRequests().antMatchers("/actuator/**").permitAll();
         super.configure(http);
     }
 }

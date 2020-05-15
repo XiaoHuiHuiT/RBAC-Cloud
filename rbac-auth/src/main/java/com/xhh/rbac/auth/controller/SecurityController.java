@@ -39,7 +39,7 @@ public class SecurityController {
     public RbacResponse signout(HttpServletRequest request) throws RbacAuthException {
         String authorization = request.getHeader("Authorization");
         String token = StringUtils.replace(authorization, "bearer ", "");
-        RbacResponse febsResponse = new RbacResponse();
+        RbacResponse rbacResponse = new RbacResponse();
         if (!consumerTokenServices.revokeToken(token)) {
             throw new RbacAuthException("退出登录失败");
         }

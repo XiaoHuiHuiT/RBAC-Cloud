@@ -23,6 +23,8 @@ public class RbacServerTestResourceServerConfigure extends ResourceServerConfigu
         http.csrf().disable()
                 .requestMatchers().antMatchers("/**")
                 .and()
+                .authorizeRequests().antMatchers("/actuator/**").permitAll()
+                .and()
                 .authorizeRequests()
                 .antMatchers("/**").authenticated();
     }

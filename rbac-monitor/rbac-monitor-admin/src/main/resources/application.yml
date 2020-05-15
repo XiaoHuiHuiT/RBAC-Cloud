@@ -1,0 +1,14 @@
+server:
+  port: 8401
+
+spring:
+  security:
+    user:
+      name: rbac
+      password: 1234
+  application:
+    name: RBAC-Monitor-Admin
+  boot:
+    admin:
+      ui:
+        title: ${spring.application.name}

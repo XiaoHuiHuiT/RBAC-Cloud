@@ -2,6 +2,12 @@ server:
   port: 8202
 
 spring:
+  boot:
+    admin:
+      client:
+        url: http://localhost:8401
+        username: rbac
+        password: 1234
   autoconfigure:
     exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration,com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceAutoConfiguration
   application:
@@ -30,3 +36,25 @@ feign:
 hystrix:
   # 请求拦截器能够顺利获取到令牌
   shareSecurityContext: true
+
+info:
+  app:
+    name: ${spring.application.name}
+    description: "@project.description@"
+    version: "@project.version@"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: ALWAYS
+
+  #  spring.boot.admin.client.url指定了SBA服务端地址；
+  #  spring.boot.admin.client.username对应SBA服务端的用户名；
+  #  spring.boot.admin.client.password对应SBA服务端的密码；
+  #  info.**配置了SBA客户端的名称，描述和版本信息；
+  #  management.endpoints.web.exposure.include='*'表示将SBA客户端的所有监控端点都暴露给SBA服务端；
+  #  management.endpoint.health.show-details表示总是展示详细的健康信息。
