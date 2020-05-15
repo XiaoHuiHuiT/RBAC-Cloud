@@ -27,13 +27,15 @@ spring:
     host: xhh.ddos-sec.cn
     password: 1234
     port: 6400
-    jedis:
+    lettuce:
       pool:
         min-idle: 8
         max-idle: 500
         max-active: 2000
         max-wait: 10000
     timeout: 5000
+
+
 
 eureka:
   instance:

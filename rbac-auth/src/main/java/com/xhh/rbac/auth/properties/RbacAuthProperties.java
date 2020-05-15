@@ -20,4 +20,10 @@ public class RbacAuthProperties {
     private int accessTokenValiditySeconds = 60 * 60 * 24;
     // refreshTokenValiditySeconds用于指定refresh_token的有效时间，默认值为60 * 60 * 24 * 7秒
     private int refreshTokenValiditySeconds = 60 * 60 * 24 * 7;
+
+    // 免认证路径
+    private String anonUrl;
+
+    //验证码配置类
+    private RbacValidateCodeProperties code = new RbacValidateCodeProperties();
 }
