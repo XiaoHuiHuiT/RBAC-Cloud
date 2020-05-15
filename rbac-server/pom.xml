@@ -12,6 +12,7 @@
 
     <modules>
         <module>rbac-server-system</module>
+        <module>rbac-server-test</module>
     </modules>
 
     <artifactId>rbac-server</artifactId>
