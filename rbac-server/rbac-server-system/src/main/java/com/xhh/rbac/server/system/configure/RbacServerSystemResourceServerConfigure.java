@@ -2,6 +2,8 @@ package com.xhh.rbac.server.system.configure;
 
 import com.xhh.rbac.common.handler.RbacAccessDeniedHandler;
 import com.xhh.rbac.common.handler.RbacAuthExceptionEntryPoint;
+import com.xhh.rbac.server.system.properties.RbacServerSystemProperties;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -24,12 +26,18 @@ public class RbacServerSystemResourceServerConfigure extends ResourceServerConfi
     @Autowired
     private RbacAuthExceptionEntryPoint exceptionEntryPoint;
 
+    @Autowired
+    private RbacServerSystemProperties properties;
+
     @Override
     public void configure(HttpSecurity http) throws Exception {
+        String[] anonUrls = StringUtils.splitByWholeSeparatorPreserveAllTokens(properties.getAnonUrl(), ",");
+
         http.csrf().disable()
                 .requestMatchers().antMatchers("/**")
                 .and()
                 .authorizeRequests()
+                .antMatchers(anonUrls).permitAll()
                 .antMatchers("/**").authenticated();
     }
 
