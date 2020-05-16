@@ -2,6 +2,17 @@ server:
   port: 8202
 
 spring:
+  zipkin:
+    sender:
+      type: rabbit
+  sleuth:
+    sampler:
+      probability: 1
+  rabbitmq:
+    host: 39.106.71.75
+    port: 5672
+    username: rbac
+    password: 1234
   boot:
     admin:
       client:
